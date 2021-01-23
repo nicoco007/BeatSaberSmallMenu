@@ -1,0 +1,3 @@
+﻿<scrollable-settings-container>
+  <slider-setting text="Scale" min="0.5" max="2" value="scale" apply-on-change="true" />
+</scrollable-settings-container>
