@@ -2,7 +2,6 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <BeatSaberDir>D:\Steam Library\steamapps\common\Beat Saber</BeatSaberDir>
     <SteamExecutable>C:\Program Files (x86)\Steam\steam.exe</SteamExecutable>
   </PropertyGroup>
 
