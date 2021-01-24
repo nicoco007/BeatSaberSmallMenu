@@ -61,8 +61,9 @@ namespace SmallMenu
         {
             if (!_screenSystem || !_bottomScreen || _settings.scale <= 0) return;
 
-            // UI center is approximately 0.85 m up
-            float offset = Mathf.Max(0, 0.85f - 0.85f / 1.5f * _settings.scale);
+            // menu screen (scale 1.0) was originally at y = 1.35 and at scale 1.5 it is at y = 0.85
+            // therefore, at scale 1.0, the screen system must be moved up by y += 0.5
+            float offset = Mathf.Max(0, 1.5f - 1f * _settings.scale);
 
             Vector3 screenSystemPosition = _screenSystem.transform.localPosition;
             _screenSystem.transform.localPosition = new Vector3(screenSystemPosition.x, offset, screenSystemPosition.z);
