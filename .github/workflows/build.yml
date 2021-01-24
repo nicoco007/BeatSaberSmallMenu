@@ -1,0 +1,50 @@
+name: build
+
+on:
+  push:
+    branches:
+    - main
+    - develop
+    - actions
+    tags:
+    - '*'
+  pull_request:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Set up .NET Core
+      uses: actions/setup-dotnet@v1.7.2
+      with:
+        dotnet-version: 3.1.x
+
+    - name: Prepare Environment
+      run: .\prepare_environment.ps1 "Source\SmallMenu\manifest.json"
+
+    - name: Fetch Beat Saber Bindings
+      run: git clone https://nicoco007:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/nicoco007/BeatSaberBindings "BeatSaberBindings\Beat Saber_Data\Managed"
+
+    - name: Restore NuGet Packages
+      run: dotnet restore Source\SmallMenu\SmallMenu.csproj
+
+    - name: Build Debug
+      run: dotnet build --no-restore Source\SmallMenu\SmallMenu.csproj -c Debug -p:BeatSaberDir=..\..\BeatSaberBindings
+
+    - name: Upload Debug
+      uses: actions/upload-artifact@v2.2.0
+      with:
+        name: BeatSaberSmallMenus-${{ env.ZIP_VERSION }}-DEBUG
+        path: Source\SmallMenu\bin\Debug\netstandard2.0\publish
+
+    - name: Build Release
+      run: dotnet build --no-restore Source\SmallMenu\SmallMenu.csproj -c Release -p:BeatSaberDir=..\..\BeatSaberBindings
+
+    - name: Upload Release
+      uses: actions/upload-artifact@v2.2.0
+      with:
+        name: BeatSaberSmallMenus-${{ env.ZIP_VERSION }}-RELEASE
+        path: Source\SmallMenu\bin\Release\netstandard2.0\publish
