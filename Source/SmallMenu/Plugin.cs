@@ -1,4 +1,5 @@
-﻿using IPA;
+﻿using HMUI;
+using IPA;
 using IPA.Config;
 using IPA.Config.Stores;
 using IPA.Logging;
@@ -12,7 +13,7 @@ namespace SmallMenu
         [Init]
         public Plugin(Zenjector zenjector, Logger logger, Config config)
         {
-            zenjector.OnMenu<SmallMenuInstaller>().WithParameters(logger, config.Generated<Settings>());
+            zenjector.OnMenu<SmallMenuInstaller>().WithParameters(logger, config.Generated<Settings>()).Expose<HierarchyManager>();
         }
     }
 }
