@@ -37,7 +37,7 @@ jobs:
     - name: Upload Debug
       uses: actions/upload-artifact@v2.2.0
       with:
-        name: BeatSaberSmallMenus-${{ env.ZIP_VERSION }}-DEBUG
+        name: BeatSaberSmallMenu-${{ env.ZIP_VERSION }}-DEBUG
         path: Source\SmallMenu\bin\Debug\netstandard2.0\publish
 
     - name: Build Release
@@ -46,5 +46,5 @@ jobs:
     - name: Upload Release
       uses: actions/upload-artifact@v2.2.0
       with:
-        name: BeatSaberSmallMenus-${{ env.ZIP_VERSION }}-RELEASE
+        name: BeatSaberSmallMenu-${{ env.ZIP_VERSION }}-RELEASE
         path: Source\SmallMenu\bin\Release\netstandard2.0\publish
