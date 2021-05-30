@@ -1,3 +1,4 @@
 ﻿<scrollable-settings-container>
-  <slider-setting text="Scale" min="0.5" max="2" value="scale" apply-on-change="true" />
+  <dropdown-list-setting text="Scale" value="scale-value" apply-on-change="true" options="scale-options" formatter="scale-formatter" />
+  <slider-setting id="custom-scale" text="Custom Scale" min="0.5" max="2" value="custom-scale-value" apply-on-change="true" active="~custom-scale-active" />
 </scrollable-settings-container>
