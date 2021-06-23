@@ -3,4 +3,4 @@ Makes the main menu smaller & closer, just like it was in Beat Saber 1.13.0. By 
 
 ## Comparison
 *Before* is the standard menu size as of 1.13.2, and *After* is the size of the menu after installing SmallMenu, which is identical to the size of the menu in version 1.13.0. 
-![Comparison screenshots](https://i.imgur.com/BLfiTAa.png)
+![Comparison screenshots](https://user-images.githubusercontent.com/1349975/123017718-27706100-d39b-11eb-9637-17edcb6b0608.png)
