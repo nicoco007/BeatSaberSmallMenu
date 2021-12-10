@@ -2,13 +2,13 @@
   "$schema": "https://raw.githubusercontent.com/nike4613/ModSaber-MetadataFileSchema/master/Schema.json",
   "author": "Nicolas Gnyra",
   "description": "Makes the menu small again.",
-  "gameVersion": "1.16.1",
+  "gameVersion": "1.19.0",
   "id": "SmallMenu",
   "name": "SmallMenu",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "dependsOn": {
     "BSIPA": "^4.0.0",
-    "SiraUtil": "^2.1.0",
-    "BeatSaberMarkupLanguage": "^1.4.5"
+    "SiraUtil": ">= 3.0.0-rc1 <4.0.0",
+    "BeatSaberMarkupLanguage": "^1.5.12"
   }
 }
