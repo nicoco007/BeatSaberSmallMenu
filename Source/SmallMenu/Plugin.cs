@@ -6,7 +6,7 @@ using SiraUtil.Zenject;
 
 namespace SmallMenu
 {
-    [Plugin(RuntimeOptions.DynamicInit)]
+    [Plugin(RuntimeOptions.DynamicInit), NoEnableDisable]
     public class Plugin
     {
         [Init]
