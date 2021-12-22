@@ -6,13 +6,14 @@ using SiraUtil.Zenject;
 
 namespace SmallMenu
 {
-    [Plugin(RuntimeOptions.SingleStartInit)]
+    [Plugin(RuntimeOptions.DynamicInit), NoEnableDisable]
     public class Plugin
     {
         [Init]
         public Plugin(Zenjector zenjector, Logger logger, Config config)
         {
-            zenjector.Install<SmallMenuInstaller>(Location.Menu, logger, config.Generated<Settings>());
+            zenjector.UseLogger(logger);
+            zenjector.Install<SmallMenuInstaller>(Location.Menu, config.Generated<Settings>());
         }
     }
 }
