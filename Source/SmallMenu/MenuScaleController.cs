@@ -2,9 +2,9 @@
 using IPA.Utilities;
 using System;
 using System.ComponentModel;
+using SiraUtil.Logging;
 using UnityEngine;
 using Zenject;
-using Logger = IPA.Logging.Logger;
 
 namespace SmallMenu
 {
@@ -12,7 +12,7 @@ namespace SmallMenu
     {
         private static readonly FieldAccessor<ScreenModeController, ScreenModeData>.Accessor kDefaultModeDataAccessor = FieldAccessor<ScreenModeController, ScreenModeData>.GetAccessor("_defaultModeData");
 
-        private Logger _logger;
+        private SiraLog _logger;
         private Settings _settings;
         private HierarchyManager _hierarchyManager;
         private ScreenModeController _screenModeController;
@@ -20,7 +20,7 @@ namespace SmallMenu
         private Transform _bottomScreen;
 
         [Inject]
-        public void Construct(Logger logger, Settings settings, HierarchyManager hierarchyManager, ScreenModeController screenModeController)
+        public void Construct(SiraLog logger, Settings settings, HierarchyManager hierarchyManager, ScreenModeController screenModeController)
         {
             _logger = logger;
             _settings = settings;

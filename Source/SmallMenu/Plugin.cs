@@ -12,7 +12,8 @@ namespace SmallMenu
         [Init]
         public Plugin(Zenjector zenjector, Logger logger, Config config)
         {
-            zenjector.Install<SmallMenuInstaller>(Location.Menu, logger, config.Generated<Settings>());
+            zenjector.UseLogger(logger);
+            zenjector.Install<SmallMenuInstaller>(Location.Menu, config.Generated<Settings>());
         }
     }
 }
