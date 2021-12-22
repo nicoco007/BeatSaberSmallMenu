@@ -589,6 +589,13 @@
             The chain will start if the highest priority object has chaining enabled and will stop once a registration
             in the aggregate has chaining disabled.</param>
         </member>
+        <member name="M:SiraUtil.Objects.RedecoratorRegistration.Redecorate(System.Object)">
+            <summary>
+            Redecorates an object.
+            </summary>
+            <param name="value">The object to redecorate.</param>
+            <returns>The redecorated object.</returns>
+        </member>
         <member name="T:SiraUtil.Objects.SiraPrefabContainer">
             <summary>
             A container to wrap a prefab into.
@@ -615,6 +622,24 @@
             </summary>
             <typeparam name="TPrefabType">The type of the prefab.</typeparam>
             <typeparam name="TParentType">The type of the parent.</typeparam>
+        </member>
+        <member name="M:SiraUtil.Objects.TemplateRedecoratorRegistration`2.#ctor(System.String,System.Func{`0,`0},System.Int32,System.Boolean)">
+            <summary>
+            Creates a new templated redecorator.
+            </summary>
+            <param name="contract">The contract type of the redecorator.</param>
+            <param name="redecorateCall">The callback for redecoration.</param>
+            <param name="priority">The redecoration priority.</param>
+            <param name="chain">Whether to chain this redecoration with others. Every redecoration is now aggregated.
+            The chain will start if the highest priority object has chaining enabled and will stop once a registration
+            in the aggregate has chaining disabled.</param>
+        </member>
+        <member name="M:SiraUtil.Objects.TemplateRedecoratorRegistration`2.Redecorate(System.Object)">
+            <summary>
+            Redecorates through a template.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
         </member>
         <member name="M:SiraUtil.Sabers.Effects.SiraSaberClashChecker.AreSabersClashing(UnityEngine.Vector3@)">
             <summary>
@@ -923,6 +948,41 @@
             Copies a ticket.
             </summary>
             <returns></returns>
+        </member>
+        <member name="T:SiraUtil.Tools.FPFC.IFPFCSettings">
+            <summary>
+            Represents settings for FPFC. This is subject to changes in the future, so don't be surprised if I update it and you inherit this object.
+            </summary>
+        </member>
+        <member name="P:SiraUtil.Tools.FPFC.IFPFCSettings.FOV">
+            <summary>
+            The FOV for the camera. This doesn't work when a VR headset is active.
+            </summary>
+        </member>
+        <member name="P:SiraUtil.Tools.FPFC.IFPFCSettings.Enabled">
+            <summary>
+            Whether or not the controller is enabled.
+            </summary>
+        </member>
+        <member name="P:SiraUtil.Tools.FPFC.IFPFCSettings.MoveSensitivity">
+            <summary>
+            The arbituary move sensitivity.
+            </summary>
+        </member>
+        <member name="P:SiraUtil.Tools.FPFC.IFPFCSettings.MouseSensitivity">
+            <summary>
+            The arbituary mouse sensitivity.
+            </summary>
+        </member>
+        <member name="P:SiraUtil.Tools.FPFC.IFPFCSettings.Ignore">
+            <summary>
+            Ignores and inverts the default state of FPFC when changed.
+            </summary>
+        </member>
+        <member name="E:SiraUtil.Tools.FPFC.IFPFCSettings.Changed">
+            <summary>
+            Called when the object is changed.
+            </summary>
         </member>
         <member name="T:SiraUtil.Tools.SongControl.ISongControl">
             <summary>
