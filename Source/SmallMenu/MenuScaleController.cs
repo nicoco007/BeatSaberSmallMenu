@@ -1,5 +1,4 @@
 ﻿using HMUI;
-using IPA.Utilities;
 using System;
 using System.ComponentModel;
 using UnityEngine;
@@ -10,8 +9,6 @@ namespace SmallMenu
 {
     internal class MenuScaleController : IInitializable, IDisposable
     {
-        private static readonly FieldAccessor<ScreenModeController, ScreenModeData>.Accessor kDefaultModeDataAccessor = FieldAccessor<ScreenModeController, ScreenModeData>.GetAccessor("_defaultModeData");
-
         private Logger _logger;
         private Settings _settings;
         private HierarchyManager _hierarchyManager;
@@ -60,7 +57,7 @@ namespace SmallMenu
         {
             if (_settings.scale <= 0) return;
 
-            ScreenModeData screenModeData = kDefaultModeDataAccessor(ref _screenModeController);
+            ScreenModeData screenModeData = _screenModeController._defaultModeData;
 
             // menu screen (scale 1.0) was originally at y = 1.35 and at scale 1.5 it is at y = 0.85
             // therefore, at scale 1.0, the screen system must be moved up by y += 0.5

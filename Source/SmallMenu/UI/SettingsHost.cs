@@ -20,10 +20,12 @@ namespace SmallMenu
         internal SliderSetting customScaleSetting;
 
         private readonly Settings _settings;
+        private readonly BSMLSettings _bsmlSettings;
 
-        public SettingsHost(Settings settings)
+        public SettingsHost(Settings settings, BSMLSettings bsmlSettings)
         {
             _settings = settings;
+            _bsmlSettings = bsmlSettings;
         }
 
         [UIValue("custom-scale-active")]
@@ -96,15 +98,12 @@ namespace SmallMenu
 
         public void Initialize()
         {
-            BSMLSettings.instance.AddSettingsMenu("SmallMenu", "SmallMenu.UI.Settings.bsml", this);
+            _bsmlSettings.AddSettingsMenu("SmallMenu", "SmallMenu.UI.Settings.bsml", this);
         }
 
         public void Dispose()
         {
-            if (BSMLSettings.instance)
-            {
-                BSMLSettings.instance.RemoveSettingsMenu(this);
-            }
+            _bsmlSettings.RemoveSettingsMenu(this);
         }
 
         [UIAction("scale-formatter")]
