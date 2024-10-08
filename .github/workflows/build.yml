@@ -1,50 +1,32 @@
-name: build
+name: Build
 
 on:
   push:
-    branches:
-    - main
-    - develop
-    - actions
-    tags:
-    - '*'
-  pull_request:
+    paths:
+    - .github/workflows/build.yml
+    - SmallMenu/**
+    - SmallMenu.sln
 
 jobs:
   build:
+    name: SmallMenu
     runs-on: windows-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
+    - name: Check out
+      uses: actions/checkout@v4
 
-    - name: Set up .NET Core
-      uses: actions/setup-dotnet@v1.7.2
+    - name: Set up Beat Saber
+      uses: nicoco007/setup-beat-saber@v1
       with:
-        dotnet-version: 3.1.x
-
-    - name: Prepare Environment
-      run: .\prepare_environment.ps1 "Source\SmallMenu\manifest.json"
-
-    - name: Fetch Beat Saber Bindings
-      run: git clone https://nicoco007:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/nicoco007/BeatSaberBindings "BeatSaberBindings\Beat Saber_Data\Managed"
-
-    - name: Restore NuGet Packages
-      run: dotnet restore Source\SmallMenu\SmallMenu.csproj
-
-    - name: Build Debug
-      run: dotnet build --no-restore Source\SmallMenu\SmallMenu.csproj -c Debug -p:BeatSaberDir=..\..\BeatSaberBindings
-
-    - name: Upload Debug
-      uses: actions/upload-artifact@v2.2.0
-      with:
-        name: BeatSaberSmallMenu-${{ env.ZIP_VERSION }}-DEBUG
-        path: Source\SmallMenu\bin\Debug\netstandard2.0\publish
+        access-token: ${{ secrets.BEAT_SABER_REFERENCE_ASSEMBLIES_TOKEN }}
+        project-path: ${{ github.workspace }}\SmallMenu\SmallMenu.csproj
 
     - name: Build Release
-      run: dotnet build --no-restore Source\SmallMenu\SmallMenu.csproj -c Release -p:BeatSaberDir=..\..\BeatSaberBindings
+      id: build-release
+      run: dotnet build ${{ github.workspace }}\SmallMenu\SmallMenu.csproj -c Release
 
     - name: Upload Release
-      uses: actions/upload-artifact@v2.2.0
+      uses: actions/upload-artifact@v4
       with:
-        name: BeatSaberSmallMenu-${{ env.ZIP_VERSION }}-RELEASE
-        path: Source\SmallMenu\bin\Release\netstandard2.0\publish
+        name: ${{ steps.build-release.outputs.artifact-name }}
+        path: ${{ steps.build-release.outputs.artifact-path }}

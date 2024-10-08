@@ -1,12 +1,21 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net472</TargetFramework>
+    <PackageId>SmallMenu</PackageId>
+    <Title>SmallMenu</Title>
+    <Authors>Nicolas Gnyra</Authors>
+    <Copyright>Copyright © 2021-2024 Nicolas Gnyra</Copyright>
+    <Description>Makes the menu small again.</Description>
+    <GameVersion>1.37.4</GameVersion>
+    <Version>1.2.1</Version>
+    <RepositoryUrl>https://github.com/nicoco007/BeatSaberSmallMenu</RepositoryUrl>
   </PropertyGroup>
 
-  <PropertyGroup Condition="$(Configuration) == 'Release'">
-    <DebugType>none</DebugType>
-  </PropertyGroup>
+  <ItemGroup>
+    <DependsOn Include="BSIPA" Version="^4.2.1" />
+    <DependsOn Include="SiraUtil" Version="^3.0.0" />
+    <DependsOn Include="BeatSaberMarkupLanguage" Version="^1.6.0" />
+  </ItemGroup>
 
   <ItemGroup>
     <Reference Include="BeatSaber.ViewSystem">
@@ -57,25 +66,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="manifest.json" />
     <EmbeddedResource Include="UI\Settings.bsml" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="BeatSaberModdingTools.Tasks" Version="1.4.3">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
     <PackageReference Include="BepInEx.AssemblyPublicizer.MSBuild" Version="0.4.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
   </ItemGroup>
-
-  <ProjectExtensions>
-    <VisualStudio>
-      <UserProperties manifest_1json__JsonSchema="https://json-schema.org/draft-04/schema" />
-    </VisualStudio>
-  </ProjectExtensions>
 
 </Project>
